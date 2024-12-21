@@ -1,15 +1,16 @@
-// import React from 'react'
+
 
 import { Outlet } from "react-router-dom";
-import Sidebar from "../Sidebar/Sidebar";
 import Navbar from "../Navbar/Navbar";
+import SideBar from "../SideBar/SideBar";
+// grid grid-cols-[.1fr_6fr]
 
 export default function MasterLayout() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-[1fr_6fr] h-screen">
+    <div className=" grid grid-cols-[.1fr_6fr] h-screen">
       {/* Sidebar */}
       <div className="">
-        <Sidebar />
+       <SideBar/>
       </div>
 
       {/* Main Content */}
@@ -22,5 +23,6 @@ export default function MasterLayout() {
         </div>
       </div>
     </div>
+    
   )
 }

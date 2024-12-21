@@ -12,6 +12,7 @@ import AddUser from './Component/AddUser/AddUser'
 import UpdateUser from './Component/UpdateUser/UpdateUser'
 import Profile from './Component/Profile/Profile'
 import NotFound from './Component/NotFound/NotFound'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   const routs=createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
       {path:'home',element:<Home/>},
       {path:'userlist',element:<UserList/>},
       {path:'adduser',element:<AddUser/>},
+      {path:'adduser/:id',element:<AddUser/>},
       {path:'updateuser',element:<UpdateUser/>},
       {path:'profile',element:<Profile/>},
       {path:"*",element:<NotFound/>}
@@ -34,6 +36,7 @@ function App() {
 
   return (
     <>
+     <ToastContainer />
       <RouterProvider router={routs}/>
     </>
   )
