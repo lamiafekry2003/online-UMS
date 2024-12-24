@@ -157,14 +157,14 @@ export default function Home() {
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const getUsers = async () => {
-    try {
-      const response = await axios.get<{ users: User[] }>("https://dummyjson.com/users");
-      setUsers(response.data.users);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getUsers = async () => {
+  //   try {
+  //     const response = await axios.get<{ users: User[] }>("https://dummyjson.com/users");
+  //     setUsers(response.data.users);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const deleteUser = async (id: number) => {
     try {
@@ -180,6 +180,15 @@ export default function Home() {
   };
 
   useEffect(() => {
+    // getUsers();
+    const getUsers = async () => {
+      try {
+        const response = await axios.get<{ users: User[] }>("https://dummyjson.com/users");
+        setUsers(response.data.users);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     getUsers();
   }, []);
 
