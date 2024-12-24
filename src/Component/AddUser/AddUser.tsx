@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
+
 export default function AddUser() {
   interface addUser {
     firstName: string;
@@ -29,15 +31,15 @@ export default function AddUser() {
       axios
         .get(`https://dummyjson.com/users/${id}`)
         .then((response) => {
-          const userData = response.data;
-          
-          setValue("firstName", userData.firstName);
-          setValue("lastName", userData.lastName);
-          setValue("email", userData.email);
-          setValue("age", userData.age);
-          setValue("phone", userData.phone);
+          const dataUser = response.data;
+          console.log(dataUser)
+          setValue("firstName", dataUser.firstName);
+          setValue("lastName", dataUser.lastName);
+          setValue("email", dataUser.email);
+          setValue("age", dataUser.age);
+          setValue("phone", dataUser.phone);
            // Format birthDate for date input
-        const formattedDate = new Date(userData.birthDate).toISOString().split("T")[0];
+        const formattedDate = new Date(dataUser.birthDate).toISOString().split("T")[0];
         setValue("birthDate", formattedDate);
         })
         .catch((error) => {
@@ -62,7 +64,8 @@ export default function AddUser() {
         console.log(error)
         toast.error('Faild To Update Data')
       }
-    }else{
+    }
+    else{
       try {
         // Add new user
         const response = await axios.post(
@@ -87,7 +90,7 @@ export default function AddUser() {
       <form
         action=""
         onSubmit={handleSubmit(onSubmit)}
-        className="flex shadow-lg md:mx-14 xl:mx-28 my-7 p-5 bg-white rounded-2xl flex-col justify-center items-center  "
+        className="flex shadow-lg md:mx-14 xl:mx-28 my-5 p-5 bg-white rounded-2xl flex-col justify-center items-center  "
       >
         <div className="lg:my-6 flex flex-col lg:flex-row w-full max-w-4xl lg:space-x-4">
           {/* First Input */}
@@ -249,7 +252,7 @@ export default function AddUser() {
         </div>
         <button
           type="submit"
-          className="bg-yellow-500 hover:bg-yellow-400 text-white rounded-sm my-5 w-1/2 p-2"
+          className="bg-yellow-500 hover:bg-yellow-400 text-white rounded-sm my-3 md:my-5 w-1/2 p-2"
         >
           {id ? "Update" : "Save"}
         </button>

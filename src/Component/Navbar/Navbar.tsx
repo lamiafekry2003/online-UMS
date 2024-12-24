@@ -1,14 +1,16 @@
-// import  { useState } from "react";
+
 import { CiSearch } from "react-icons/ci";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { MdOutlineManageAccounts } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  // const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // const [searchTerm, setSearchTerm] = useState(""); 
 
-  // const toggleMobileMenu = () => {
-  //   setIsMobileMenuOpen(!isMobileMenuOpen);
+  
+  // const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchTerm(event.target.value);
   // };
 
   return (
@@ -68,3 +70,45 @@ export default function Navbar() {
     </nav>
   );
 }
+// import { CiSearch } from "react-icons/ci";
+// import { IoMdNotificationsOutline } from "react-icons/io";
+// import { MdOutlineManageAccounts } from "react-icons/md";
+// import { Link } from "react-router-dom";
+// import { useState } from "react";
+
+// export default function Navbar({ onSearch }) {
+//   const [searchTerm, setSearchTerm] = useState("");
+
+//   const handleSearchChange = (event) => {
+//     const term = event.target.value;
+//     setSearchTerm(term);
+//     onSearch(term); // Call the parent's search function
+//   };
+
+//   return (
+//     <nav className="bg-white border-gray-200 dark:bg-gray-900">
+//       <div className="max-w-screen-xl flex items-center justify-between p-4">
+//         {/* Logo */}
+//         <Link to="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+//           <MdOutlineManageAccounts size={24} className="text-gray-400" />
+//         </Link>
+
+//         {/* Search Input */}
+//         <div className="flex items-center justify-end ms-auto space-x-3">
+//           <div className="flex relative">
+//             <input
+//               type="text"
+//               placeholder="Search Users"
+//               value={searchTerm}
+//               onChange={handleSearchChange}
+//               className="block py-2 px-2 md:px-4 relative right-0 text-sm outline-none text-gray-900 border border-gray-300 rounded-md bg-transparent focus:ring-yellow-500 focus:border-yellow-500"
+//             />
+//             <CiSearch size={20} className="absolute right-0 top-2 mx-2 text-gray-500" />
+//           </div>
+//           <IoMdNotificationsOutline size={24} className="text-gray-500" />
+//         </div>
+//       </div>
+//     </nav>
+//   );
+// }
+

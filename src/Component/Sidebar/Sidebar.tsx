@@ -3,7 +3,7 @@ import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Link, useNavigate } from "react-router-dom";
 import style from "./sidebar.module.css";
 import { IoHomeOutline, IoPersonAddOutline } from "react-icons/io5";
-import { TbUsersGroup } from "react-icons/tb";
+// import { TbUsersGroup } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
 import { useContext, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -66,13 +66,13 @@ export default function SideBar() {
           >
             {!collapsed && "Home"}
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             className="text-center"
             icon={<TbUsersGroup size={24} />}
             component={<Link to="/dashboard/userlist" />}
           >
             {!collapsed && "Users"}
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             className="text-center"
             icon={<IoPersonAddOutline size={24} />}

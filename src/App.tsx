@@ -26,7 +26,8 @@ function App() {
       {path:'home',element:<Home/>},
       {path:'userlist',element:<UserList/>},
       {path:'adduser',element:<AddUser/>},
-      {path:'adduser/:id',element:<AddUser/>},
+      // {path:'adduser/:id',element:<AddUser/>},
+      {path:'updateuser/:id',element:<AddUser/>},
       {path:'updateuser',element:<UpdateUser/>},
       {path:'profile',element:<Profile/>},
       {path:"*",element:<NotFound/>}
