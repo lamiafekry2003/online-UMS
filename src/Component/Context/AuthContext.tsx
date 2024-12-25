@@ -71,8 +71,7 @@ interface AuthcontextType {
 }
 
 // Create the context
-export const AuthContext = createContext<AuthcontextType | null>(null);
-
+  export const AuthContext = createContext<AuthcontextType | null>(null);
 // any context must have it 
 interface AuthContextProviderProps {
   children: ReactNode;
