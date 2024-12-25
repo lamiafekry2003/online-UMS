@@ -6,7 +6,7 @@
 //   id:number;
 //   name:string;
 //   email:string;
-//   age?: number; 
+//   age?: number;
 //   phone?: string;
 //   birthDate?: string;
 // }
@@ -20,7 +20,7 @@
 // // Create the context
 // export const AuthContext = createContext<AuthcontextType|null>(null);
 
-// //any context must have it 
+// //any context must have it
 // interface AuthContextProviderProps{
 //   children:ReactNode
 // }
@@ -50,8 +50,8 @@
 // }
 // to profile also
 import { createContext, ReactNode, useEffect, useState } from "react";
-import {jwtDecode} from 'jwt-decode';
-import axios from 'axios';
+import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 interface User {
   id: number;
@@ -72,13 +72,15 @@ interface AuthcontextType {
 }
 
 // Create the context
-  export const AuthContext = createContext<AuthcontextType | null>(null);
-// any context must have it 
+export const AuthContext = createContext<AuthcontextType | null>(null);
+// any context must have it
 interface AuthContextProviderProps {
   children: ReactNode;
 }
 
-export default function AuthContextProvider({ children }: AuthContextProviderProps) {
+export default function AuthContextProvider({
+  children,
+}: AuthContextProviderProps) {
   const [userData, setUserData] = useState<User | null>(null);
 
   const saveUserDate = async () => {
@@ -86,8 +88,12 @@ export default function AuthContextProvider({ children }: AuthContextProviderPro
     if (encodedToken) {
       const decodedToken = jwtDecode<User>(encodedToken);
       try {
-        const response = await axios.get<{ users: User[] }>("https://dummyjson.com/users");
-        const user = response.data.users.find(user => user.id === decodedToken.id);
+        const response = await axios.get<{ users: User[] }>(
+          "https://dummyjson.com/users"
+        );
+        const user = response.data.users.find(
+          (user) => user.id === decodedToken.id
+        );
         if (user) {
           setUserData(user);
         }
