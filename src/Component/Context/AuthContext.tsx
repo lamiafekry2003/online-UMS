@@ -71,7 +71,6 @@ interface AuthcontextType {
   saveUserDate: () => void;
 }
 
-// Create the context
 export const AuthContext = createContext<AuthcontextType | null>(null);
 // any context must have it
 interface AuthContextProviderProps {

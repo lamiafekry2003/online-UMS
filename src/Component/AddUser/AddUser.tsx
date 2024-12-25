@@ -4,8 +4,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
-
-
 export default function AddUser() {
   interface addUser {
     firstName: string;
@@ -32,15 +30,17 @@ export default function AddUser() {
         .get(`https://dummyjson.com/users/${id}`)
         .then((response) => {
           const dataUser = response.data;
-          console.log(dataUser)
+          console.log(dataUser);
           setValue("firstName", dataUser.firstName);
           setValue("lastName", dataUser.lastName);
           setValue("email", dataUser.email);
           setValue("age", dataUser.age);
           setValue("phone", dataUser.phone);
-           // Format birthDate for date input
-        const formattedDate = new Date(dataUser.birthDate).toISOString().split("T")[0];
-        setValue("birthDate", formattedDate);
+          // Format birthDate for date input
+          const formattedDate = new Date(dataUser.birthDate)
+            .toISOString()
+            .split("T")[0];
+          setValue("birthDate", formattedDate);
         })
         .catch((error) => {
           console.error("Failed to fetch user data:", error);
@@ -51,21 +51,20 @@ export default function AddUser() {
 
   const onSubmit = async (data: addUser) => {
     console.log(data);
-    if(id){
+    if (id) {
       try {
-         // Update user
-         const response = await axios.put(
+        // Update user
+        const response = await axios.put(
           `https://dummyjson.com/users/${id}`,
           data
         );
         console.log(response);
         toast.success("User Updated Successfully");
       } catch (error) {
-        console.log(error)
-        toast.error('Faild To Update Data')
+        console.log(error);
+        toast.error("Faild To Update Data");
       }
-    }
-    else{
+    } else {
       try {
         // Add new user
         const response = await axios.post(
@@ -75,8 +74,8 @@ export default function AddUser() {
         console.log(response);
         toast.success("User Added Successfully");
       } catch (error) {
-        console.log(error)
-        toast.error('Faild To Add User')
+        console.log(error);
+        toast.error("Faild To Add User");
       }
     }
     navigate("/dashboard");
@@ -191,7 +190,11 @@ export default function AddUser() {
                   ? ` focus:border-red-600 border-red-600`
                   : ` focus:border-amber-300`
               } `}
-              {...register("age", { required: "Age is Required!" ,min:1,max:70})}
+              {...register("age", {
+                required: "Age is Required!",
+                min: 1,
+                max: 70,
+              })}
             />
             {errors.age && (
               <span className=" text-red-600">{errors?.age?.message}</span>
